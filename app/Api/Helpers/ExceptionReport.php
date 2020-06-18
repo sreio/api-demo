@@ -12,7 +12,7 @@ use Illuminate\Validation\ValidationException;
 use Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\HttpKernel\Exception\UnauthorizedHttpException;
-//use Tymon\JWTAuth\Exceptions\TokenInvalidException;
+use Tymon\JWTAuth\Exceptions\TokenInvalidException;
 
 class ExceptionReport
 {
@@ -54,10 +54,11 @@ class ExceptionReport
         AuthorizationException::class => ['没有此权限',403],
         ValidationException::class => [],
         UnauthorizedHttpException::class=>['未登录或登录状态失效',422],
-        //TokenInvalidException::class=>['token不正确',400],
+        TokenInvalidException::class=>['token不正确',400],
         NotFoundHttpException::class=>['没有找到该页面',404],
         MethodNotAllowedHttpException::class=>['访问方式不正确',405],
         QueryException::class=>['Sql错误',401],
+        \ErrorException::class=>[],
     ];
 
     public function register($className,callable $callback){
@@ -98,9 +99,14 @@ class ExceptionReport
      * @return mixed
      */
     public function report(){
+        //参数验证错误
         if ($this->exception instanceof ValidationException){
             $error = array_first($this->exception->errors());
             return $this->failed(array_first($error),$this->exception->status);
+        }
+        //error异常
+        if ($this->exception instanceof \ErrorException){
+            return $this->failed($this->exception->getMessage(),400);
         }
         $message = $this->doReport[$this->report];
         return $this->failed($message[0],$message[1]);

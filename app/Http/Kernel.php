@@ -59,5 +59,6 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         //跨域中间件
         'cors'=> \Medz\Cors\Laravel\Middleware\ShouldGroup::class,
+        'api.refresh'=>\App\Http\Middleware\Api\RefreshTokenMiddleware::class,
     ];
 }
