@@ -15,4 +15,6 @@ use Illuminate\Http\Request;
 
 Route::get('queue','Api\PodcastController@store');
 
+Route::get('queue2','Api\PodcastController@store2');
+
 
