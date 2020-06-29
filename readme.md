@@ -24,3 +24,11 @@ Ps:其它队列驱动的依赖扩展包
 - Amazon SQS: aws/aws-sdk-php ~3.0
 - Beanstalkd: pda/pheanstalk ~3.0
 - Redis: predis/predis ~1.0
+
+- 事件系统
+
+    1. 触发方法逻辑： app/Http/Controllers/API/PodcastController.php:27
+    2. 事件类: app/Events/PodcastEvent.php
+    3. 监听类： app/Listeners/PodcastListener.php
+    4. 注册： app/Providers/EventServiceProvider.php:20
+        > key(事件类) -> [ 监听类 ] 一个事件可以对应多个监听
