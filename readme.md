@@ -25,6 +25,8 @@ Ps:其它队列驱动的依赖扩展包
 - Beanstalkd: pda/pheanstalk ~3.0
 - Redis: predis/predis ~1.0
 
+---
+
 - 事件系统
 
     1. 触发方法逻辑： app/Http/Controllers/API/PodcastController.php:27
