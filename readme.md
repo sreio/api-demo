@@ -6,7 +6,7 @@
 ## 部署步骤
 > git clone 本项目
 > composer install 安装
-    >> 安装了 `predis/predis` 扩展
+>    >> 安装了 `predis/predis` 扩展
 > npm install
     >> 安装了 `laravel-echo` 扩展，客户端socket.io监听
 >  服务端安装 `laravel-echo-server`
