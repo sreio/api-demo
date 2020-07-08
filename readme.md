@@ -42,11 +42,11 @@
 
 2. 私有频道
     > `app/Events/PrivateMessageEvent.php:39` 私有频道
-           >
+
     > `routes/web.php:26` url手动模拟推送消息
-           >
+
     > `resources/views/welcome.blade.php:35` 前端页面监听
-           >
+
     > `routes/channels.php:14` 私有频道需要定义切用户认证才可以监听
        
 ---
