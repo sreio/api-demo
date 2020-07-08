@@ -11,6 +11,11 @@
 |
 */
 
+//私有频道权限认证 $user 是需要登录用户
+Broadcast::channel('private-user-id.{userid}', function ($user, $userid) {
+    return $userid == 1;
+});
+
 Broadcast::channel('App.User.{id}', function ($user, $id) {
     return (int) $user->id === (int) $id;
 });
