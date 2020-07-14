@@ -14,3 +14,9 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+Route::get('/log', function () {
+    dd($this);
+    \Illuminate\Support\Facades\Log::error('An informational message.', ['1',1,'a','对对对']);
+});
